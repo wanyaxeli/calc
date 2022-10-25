@@ -3,11 +3,11 @@ let display = document.querySelector('.display');
 let oparatobBtns = document.querySelectorAll('.oparatorBtn');
 let result =[]
 for(let i = 0; i < Btn.length; i++){
-Btn[i].addEventListener("click", value)
+Btn[i].addEventListener("click", myvalue)
 }
-function value(e) {
-value = e.target.innerHTML;
-display.value+=value.toString()
+function myvalue(e) {
+let content = e.target.innerHTML;
+display.value+=content
 }
 for(i=0; i<oparatobBtns.length; i++){
     oparatobBtns[i].addEventListener("click", oparate)
@@ -18,15 +18,25 @@ function oparate(e) {
     display.value=""
     }
     else if ( e.target.innerHTML ==="Del"){
-    if(display.value.length > 0){
-        display.value.slice(0, -1);
-    }else{
-        console.log("none")
-    }
+     if(display.value){
+       let popedArr =display.value.toString().slice(0,-1)
+       display.value=popedArr
+     }
+     else{
+        console.log('none')
+     }
     }
     else if ( e.target.innerHTML === "="){
     result.push(eval(display.value))
-    display.value=result
+    if(display.value.length>0){
+        display.value=''
+        display.value=result
+    }
+    else{
+        display.value=result
+    }
+   
+   
 }
 
 }
